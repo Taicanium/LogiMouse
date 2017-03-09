@@ -48,6 +48,21 @@ int main()
 		}
 	}
 
+	while (!WaitingForButton)
+	{
+		mmr = joyGetPos(JOYSTICKID1, &inf);
+
+		if (mmr == 0)
+		{
+			WaitingForButton = true;
+			
+			if (inf.wButtons & BUTTON_LEFT)
+			{
+				WaitingForButton = false;
+			}
+		}
+	}
+
 	WaitingForButton = true;
 
 	std::cout << "Press a button on your joystick to use in place of the right mouse button..." << std::endl;
@@ -64,6 +79,21 @@ int main()
 					BUTTON_RIGHT = i;
 					WaitingForButton = false;
 				}
+			}
+		}
+	}
+	
+	while (!WaitingForButton)
+	{
+		mmr = joyGetPos(JOYSTICKID1, &inf);
+
+		if (mmr == 0)
+		{
+			WaitingForButton = true;
+			
+			if (inf.wButtons & BUTTON_RIGHT)
+			{
+				WaitingForButton = false;
 			}
 		}
 	}
@@ -84,6 +114,21 @@ int main()
 					BUTTON_MIDDLE = i;
 					WaitingForButton = false;
 				}
+			}
+		}
+	}
+	
+	while (!WaitingForButton)
+	{
+		mmr = joyGetPos(JOYSTICKID1, &inf);
+
+		if (mmr == 0)
+		{
+			WaitingForButton = true;
+			
+			if (inf.wButtons & BUTTON_MIDDLE)
+			{
+				WaitingForButton = false;
 			}
 		}
 	}
